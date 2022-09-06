@@ -1,3 +1,5 @@
 /web_api_test/obj
 /web_api_test/.vs
 /web_api_test/bin
+/mysql
+/web_api_test/web_api_test.csproj.user
