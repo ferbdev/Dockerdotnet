@@ -24,7 +24,7 @@ services:
 
   web_api_test:
     container_name: hello.web
-    image: ${DOCKER_REGISTRY-}webapitest
+    #image: ${DOCKER_REGISTRY-}webapitest
     build:
       context: .
       dockerfile: Dockerfile
