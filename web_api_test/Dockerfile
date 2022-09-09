@@ -5,6 +5,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+RUN dotnet dev-certs https
 # Copy everything
 COPY ./web_api_test ./
 # Restore as distinct layers
