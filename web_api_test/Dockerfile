@@ -5,6 +5,8 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+RUN dotnet dev-certs https
+
 # Copy everything
 COPY ./web_api_test ./
 # Restore as distinct layers
@@ -17,7 +19,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app/out .
 
-RUN dotnet dev-certs https
-RUN dotnet dev-certs https --trust
+COPY --from=build /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
 
 ENTRYPOINT ["dotnet", "web_api_test.dll", "--environment=Development"]
